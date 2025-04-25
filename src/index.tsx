@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
 import {BrowserRouter} from "react-router-dom";
-import ThemeProvider from "./theme/ThemeProvider.tsx";          // или сразу объявить компонент ниже
+import App from "@app/App";
+import {ThemeProvider} from "@app/providers/ThemeProvider";          // или сразу объявить компонент ниже
 
 const rootEl = document.getElementById('root')
 if (!rootEl) {

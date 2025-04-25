@@ -1,4 +1,4 @@
-import {LOCAL_STORAGE_KEY, Theme, ThemeContext} from "./ThemeContext";
+import {LOCAL_STORAGE_KEY, Theme, ThemeContext} from "@app/providers/ThemeProvider/lib/ThemeContext";
 import {FC, ReactNode, useMemo, useState} from "react";
 interface ThemeProviderProps {
     children: ReactNode;
