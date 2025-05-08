@@ -5,6 +5,7 @@ import pluginReact from "eslint-plugin-react";
 import json from "@eslint/json";
 import unusedImports from "eslint-plugin-unused-imports";
 import { defineConfig } from "eslint/config";
+import pluginI18next from "eslint-plugin-i18next";
 
 export default defineConfig([
   // 🧼 Игнорируем мусор
@@ -70,12 +71,14 @@ export default defineConfig([
       }
     },
     plugins: {
-      react: pluginReact
+      react: pluginReact,
+      i18next: pluginI18next
     },
     rules: {
       ...pluginReact.configs.recommended.rules,
       "react/display-name": "off",
-      "react/react-in-jsx-scope": "off"
+      "react/react-in-jsx-scope": "off",
+      "i18next/no-literal-string": 2
     }
   },
 

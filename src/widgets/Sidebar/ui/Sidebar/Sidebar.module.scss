@@ -1,24 +1,24 @@
 .Sidebar {
-  height: 100vh;
-  width: 300px;
-  background: var(--inverted-bg-color);
-  position: relative;
-  transition: width 0.3s ease-in-out;
+    height: 100vh;
+    width: 300px;
+    background: var(--inverted-bg-color);
+    position: relative;
+    transition: width 0.3s ease-in-out;
 }
 
 .collapsed {
-  width: 80px;
+    width: 80px;
 }
 
 .switchers {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 12px; // расстояние между переключателями
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px; // расстояние между переключателями
 }
 
 .lang {
-  margin-left: 20px;
+    margin-left: 20px;
 }

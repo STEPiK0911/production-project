@@ -1,22 +1,18 @@
-@use "reset";
 @use "themes/dark";
 @use "themes/normal";
 @use "variables/global";
 
 .app {
-  font: var(--font-m);
-
-
-  background: var(--bg-color);
-  color: var(--primary-color);
-
-  min-height: 100vh;
+    font: var(--font-m);
+    background: var(--bg-color);
+    color: var(--primary-color);
+    min-height: 100vh;
 }
 
 .content-page {
-  display: flex;
+    display: flex;
 }
 
 .page-wrapper {
-  flex-grow: 1;
+    flex-grow: 1;
 }
