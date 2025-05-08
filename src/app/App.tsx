@@ -2,16 +2,24 @@ import './styles/index.scss'
 import {classNames} from "@shared/lib/className/className";
 import {useTheme} from "@app/providers/ThemeProvider";
 import AppRouter from "@app/providers/router";
-import {Navbar} from "@widgets/Navbar/ui/Navbar";
+import {Navbar} from "@widgets/Navbar";
+import {Sidebar} from "@widgets/Sidebar/ui/Sidebar/Sidebar";
+import {Suspense,} from "react";
 export default function App() {
 
-const { theme, toggleTheme } = useTheme() ;
+
+
+const { theme } = useTheme() ;
 
     return (
         <div className={classNames('app', {}, [theme])}>
-            <Navbar/>
-            <button className="button" onClick={toggleTheme}>vsdvdsv</button>
-            <AppRouter/>
+            <Suspense fallback="">
+                <Navbar/>
+                <div className='content-page'>
+                    <Sidebar/>
+                    <AppRouter/>
+                </div>
+            </Suspense>
         </div>
     )
 }

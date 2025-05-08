@@ -1,28 +1,87 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
+import js from "@eslint/js";
+import globals from "globals";
+import tseslint from "typescript-eslint";
+import pluginReact from "eslint-plugin-react";
+import json from "@eslint/json";
+import unusedImports from "eslint-plugin-unused-imports";
+import { defineConfig } from "eslint/config";
 
-export default tseslint.config(
-  { ignores: ['dist'] },
+export default defineConfig([
+  // 🧼 Игнорируем мусор
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['**/*.{ts,tsx}'],
+    ignores: [
+      "dist/**",
+      "public/**",
+      "node_modules/**",
+      "i18n-dump/**",
+      "**/*.json"
+    ]
+  },
+
+  // 🧠 Общие JS-настройки
+  {
+    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     languageOptions: {
-      ecmaVersion: 2020,
       globals: globals.browser,
+      parserOptions: {
+        ecmaVersion: 2022,
+        sourceType: "module"
+      }
     },
     plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+      js,
+      "unused-imports": unusedImports
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
-    },
+      ...js.configs.recommended.rules,
+
+      // 🔥 удаляет неиспользуемые импорты
+      "unused-imports/no-unused-imports": "error",
+
+      // ⚠️ отключаем оригинальные, оставляем расширенные
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+
+      // 💡 кастомная версия: игнорируем переменные и аргументы с "_"
+      "unused-imports/no-unused-vars": [
+        "warn",
+        {
+          vars: "all",
+          varsIgnorePattern: "^_",
+          args: "after-used",
+          argsIgnorePattern: "^_"
+        }
+      ]
+    }
   },
-)
+
+  // 🧩 TypeScript-настройки (без дублирования правил)
+  {
+    files: ["**/*.{ts,tsx}"],
+    ...tseslint.configs.recommended[0]
+  },
+
+  // ⚛️ React-настройки
+  {
+    files: ["**/*.{jsx,tsx}"],
+    settings: {
+      react: {
+        version: "detect"
+      }
+    },
+    plugins: {
+      react: pluginReact
+    },
+    rules: {
+      ...pluginReact.configs.recommended.rules,
+      "react/display-name": "off",
+      "react/react-in-jsx-scope": "off"
+    }
+  },
+
+  // 📦 JSON
+  {
+    files: ["**/*.json"],
+    ...json.configs.recommended
+  }
+]);
