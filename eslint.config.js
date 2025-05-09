@@ -86,5 +86,14 @@ export default defineConfig([
   {
     files: ["**/*.json"],
     ...json.configs.recommended
+  },
+
+  {
+    files: ["**/*.test.{js,ts,jsx,tsx}", "**/*.spec.{js,ts,jsx,tsx}"],
+    languageOptions: {
+      globals: {
+        ...globals.jest
+      }
+    }
   }
 ]);
