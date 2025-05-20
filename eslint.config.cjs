@@ -1,6 +1,7 @@
 const js = require("@eslint/js");
 const globals = require("globals");
-const tseslint = require("typescript-eslint");
+const tsParser = require("@typescript-eslint/parser");
+const tsPlugin = require("@typescript-eslint/eslint-plugin");
 const pluginReact = require("eslint-plugin-react");
 const json = require("@eslint/json");
 const unusedImports = require("eslint-plugin-unused-imports");
@@ -8,17 +9,10 @@ const pluginI18next = require("eslint-plugin-i18next");
 const { defineConfig } = require("eslint/config");
 
 module.exports = defineConfig([
-  // 🧼 Игнорируем мусор
   {
-    ignores: [
-      "dist/**",
-      "public/**",
-      "node_modules/**",
-      "i18n-dump/**"
-    ]
+    ignores: ["dist/**", "public/**", "node_modules/**", "i18n-dump/**"]
   },
 
-  // 🧠 Общие JS-настройки
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     languageOptions: {
@@ -49,11 +43,10 @@ module.exports = defineConfig([
     }
   },
 
-  // 🧩 TypeScript-настройки
   {
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
-      parser: tseslint.parser,
+      parser: tsParser,
       parserOptions: {
         ecmaVersion: 2022,
         sourceType: "module",
@@ -61,14 +54,13 @@ module.exports = defineConfig([
       }
     },
     plugins: {
-      "@typescript-eslint": tseslint.plugin
+      "@typescript-eslint": tsPlugin
     },
     rules: {
-      ...tseslint.configs.recommended[0].rules
+      ...tsPlugin.configs.recommended.rules
     }
   },
 
-  // ⚛️ React-настройки через extends
   {
     files: ["**/*.{jsx,tsx}"],
     settings: {
@@ -88,13 +80,11 @@ module.exports = defineConfig([
     extends: ["plugin:react/recommended"]
   },
 
-  // 📦 JSON
   {
     files: ["**/*.json"],
     ...json.configs.recommended
   },
 
-  // 🧪 Тестовые файлы
   {
     files: ["**/*.test.{js,ts,jsx,tsx}", "**/*.spec.{js,ts,jsx,tsx}"],
     languageOptions: {
