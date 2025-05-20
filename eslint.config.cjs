@@ -4,19 +4,21 @@ const tseslint = require("typescript-eslint");
 const pluginReact = require("eslint-plugin-react");
 const json = require("@eslint/json");
 const unusedImports = require("eslint-plugin-unused-imports");
-const { defineConfig } = require("eslint/config");
 const pluginI18next = require("eslint-plugin-i18next");
+const { defineConfig } = require("eslint/config");
 
 module.exports = defineConfig([
+  // 🧼 Игнорируем мусор
   {
     ignores: [
       "dist/**",
       "public/**",
       "node_modules/**",
-      "i18n-dump/**",
-      "**/*.json"
+      "i18n-dump/**"
     ]
   },
+
+  // 🧠 Общие JS-настройки
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     languageOptions: {
@@ -46,10 +48,27 @@ module.exports = defineConfig([
       ]
     }
   },
+
+  // 🧩 TypeScript-настройки
   {
     files: ["**/*.{ts,tsx}"],
-    ...tseslint.configs.recommended[0]
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        ecmaVersion: 2022,
+        sourceType: "module",
+        project: ['./tsconfig.json']
+      }
+    },
+    plugins: {
+      "@typescript-eslint": tseslint.plugin
+    },
+    rules: {
+      ...tseslint.configs.recommended.rules
+    }
   },
+
+  // ⚛️ React-настройки через extends
   {
     files: ["**/*.{jsx,tsx}"],
     settings: {
@@ -62,22 +81,24 @@ module.exports = defineConfig([
       i18next: pluginI18next
     },
     rules: {
-      ...pluginReact.configs.recommended.rules,
       "react/display-name": "off",
       "react/react-in-jsx-scope": "off",
-      "i18next/no-literal-string": 2
-    }
+      "i18next/no-literal-string": "warn"
+    },
+    extends: ["plugin:react/recommended"]
   },
+
+  // 📦 JSON
   {
     files: ["**/*.json"],
     ...json.configs.recommended
   },
+
+  // 🧪 Тестовые файлы
   {
     files: ["**/*.test.{js,ts,jsx,tsx}", "**/*.spec.{js,ts,jsx,tsx}"],
     languageOptions: {
-      globals: {
-        ...globals.jest
-      }
+      globals: globals.jest
     }
   }
 ]);
