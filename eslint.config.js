@@ -57,8 +57,6 @@ export default defineConfig([
       parserOptions: {
         ecmaVersion: 2022,
         sourceType: 'module',
-        project: ['./tsconfig.json'], // ← путь к tsconfig.json в корне
-        tsconfigRootDir: new URL('.', import.meta.url).pathname // ← фикс относительного пути
       }
     },
     plugins: {
