@@ -10,7 +10,14 @@ import { defineConfig } from 'eslint/config';
 
 export default defineConfig([
   {
-    ignores: ['dist/**', 'node_modules/**', 'i18n-dump/**', 'public/**']
+    ignores: [
+      'dist/**',
+      'node_modules/**',
+      'i18n-dump/**',
+      'public/**',
+      '**/package.json',         // ← glob с **
+      '**/package-lock.json'
+    ]
   },
 
   {
@@ -20,9 +27,7 @@ export default defineConfig([
         ecmaVersion: 2022,
         sourceType: 'module'
       },
-      globals: {
-        ...globals.browser
-      }
+      globals: globals.browser
     },
     plugins: {
       js,
@@ -52,7 +57,8 @@ export default defineConfig([
       parserOptions: {
         ecmaVersion: 2022,
         sourceType: 'module',
-        project: ['./tsconfig.json']
+        project: ['./tsconfig.json'], // ← путь к tsconfig.json в корне
+        tsconfigRootDir: new URL('.', import.meta.url).pathname // ← фикс относительного пути
       }
     },
     plugins: {
