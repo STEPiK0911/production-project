@@ -63,9 +63,7 @@ module.exports = defineConfig([
     plugins: {
       "@typescript-eslint": tseslint.plugin
     },
-    rules: {
-      ...tseslint.configs.recommended.rules
-    }
+    extends: tseslint.configs.recommended
   },
 
   // ⚛️ React-настройки через extends
