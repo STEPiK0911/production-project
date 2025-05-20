@@ -16,7 +16,11 @@ export default defineConfig([
       'i18n-dump/**',
       'public/**',
       '**/package.json',         // ← glob с **
-      '**/package-lock.json'
+      '**/package-lock.json',
+      '.eslintrc.js',
+      'tsconfig.json',
+      'tsconfig.app.json',
+      'tsconfig.node.json'
     ]
   },
 

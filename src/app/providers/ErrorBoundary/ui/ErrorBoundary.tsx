@@ -15,17 +15,16 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
         this.state = { hasError: false };
     }
 
-    static getDerivedStateFromError(error: Error) {
+    static getDerivedStateFromError() {
         return { hasError: true };
     }
 
-    componentDidCatch(error: any, errorInfo: any) {
+    componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
         // Можно заменить на любую свою логику логирования
         console.error('Error caught by ErrorBoundary:', error, errorInfo);
     }
 
     render() {
-        // @ts-ignore
         if (this.state.hasError) {
             return <Suspense fallback="">
                         <PageError/>
