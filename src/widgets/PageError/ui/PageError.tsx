@@ -11,14 +11,14 @@ interface PageErrorProps {
 export const PageError = ({ className }: PageErrorProps) => {
     const { t } = useTranslation();
 
-    const appdatePage = () => {
+    const updatePage = () => {
         location.reload();
     }
 
     return (
         <div className={classNames(cls.PageError, {}, className ? [className] : [])}>
             <p>{t("Упс, что то сломалось")}</p>
-            <Button onClick={appdatePage}>
+            <Button onClick={updatePage}>
                 {t("Обновить страницу")}
             </Button>
         </div>
