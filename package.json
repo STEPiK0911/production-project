@@ -14,7 +14,7 @@
     "stylef": "npx stylelint \"**/*.scss\" --fix",
     "test": "vitest",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "i18next": "^25.1.1",
