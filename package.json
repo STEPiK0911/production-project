@@ -16,6 +16,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
+
   "dependencies": {
     "i18next": "^25.1.1",
     "i18next-browser-languagedetector": "^8.1.0",
