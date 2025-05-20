@@ -1,14 +1,13 @@
-import js from "@eslint/js";
-import globals from "globals";
-import tseslint from "typescript-eslint";
-import pluginReact from "eslint-plugin-react";
-import json from "@eslint/json";
-import unusedImports from "eslint-plugin-unused-imports";
-import { defineConfig } from "eslint/config";
-import pluginI18next from "eslint-plugin-i18next";
+const js = require("@eslint/js");
+const globals = require("globals");
+const tseslint = require("typescript-eslint");
+const pluginReact = require("eslint-plugin-react");
+const json = require("@eslint/json");
+const unusedImports = require("eslint-plugin-unused-imports");
+const { defineConfig } = require("eslint/config");
+const pluginI18next = require("eslint-plugin-i18next");
 
-export default defineConfig([
-  // 🧼 Игнорируем мусор
+module.exports = defineConfig([
   {
     ignores: [
       "dist/**",
@@ -18,8 +17,6 @@ export default defineConfig([
       "**/*.json"
     ]
   },
-
-  // 🧠 Общие JS-настройки
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     languageOptions: {
@@ -35,15 +32,9 @@ export default defineConfig([
     },
     rules: {
       ...js.configs.recommended.rules,
-
-      // 🔥 удаляет неиспользуемые импорты
       "unused-imports/no-unused-imports": "error",
-
-      // ⚠️ отключаем оригинальные, оставляем расширенные
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": "off",
-
-      // 💡 кастомная версия: игнорируем переменные и аргументы с "_"
       "unused-imports/no-unused-vars": [
         "warn",
         {
@@ -55,14 +46,10 @@ export default defineConfig([
       ]
     }
   },
-
-  // 🧩 TypeScript-настройки (без дублирования правил)
   {
     files: ["**/*.{ts,tsx}"],
     ...tseslint.configs.recommended[0]
   },
-
-  // ⚛️ React-настройки
   {
     files: ["**/*.{jsx,tsx}"],
     settings: {
@@ -81,13 +68,10 @@ export default defineConfig([
       "i18next/no-literal-string": 2
     }
   },
-
-  // 📦 JSON
   {
     files: ["**/*.json"],
     ...json.configs.recommended
   },
-
   {
     files: ["**/*.test.{js,ts,jsx,tsx}", "**/*.spec.{js,ts,jsx,tsx}"],
     languageOptions: {
