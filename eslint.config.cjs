@@ -1,94 +1,103 @@
-const js = require("@eslint/js");
-const globals = require("globals");
-const tsParser = require("@typescript-eslint/parser");
-const tsPlugin = require("@typescript-eslint/eslint-plugin");
-const pluginReact = require("eslint-plugin-react");
-const json = require("@eslint/json");
-const unusedImports = require("eslint-plugin-unused-imports");
-const pluginI18next = require("eslint-plugin-i18next");
-const { defineConfig } = require("eslint/config");
+import js from '@eslint/js';
+import globals from 'globals';
+import parserTs from '@typescript-eslint/parser';
+import pluginTs from '@typescript-eslint/eslint-plugin';
+import pluginReact from 'eslint-plugin-react';
+import pluginI18next from 'eslint-plugin-i18next';
+import pluginUnusedImports from 'eslint-plugin-unused-imports';
+import pluginJson from '@eslint/json';
+import { defineConfig } from 'eslint/config';
 
-module.exports = defineConfig([
+export default defineConfig([
   {
-    ignores: ["dist/**", "public/**", "node_modules/**", "i18n-dump/**"]
+    ignores: ['dist/**', 'node_modules/**', 'i18n-dump/**', 'public/**']
   },
 
   {
-    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+    files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     languageOptions: {
-      globals: globals.browser,
       parserOptions: {
         ecmaVersion: 2022,
-        sourceType: "module"
+        sourceType: 'module'
+      },
+      globals: {
+        ...globals.browser
       }
     },
     plugins: {
       js,
-      "unused-imports": unusedImports
+      'unused-imports': pluginUnusedImports
     },
     rules: {
       ...js.configs.recommended.rules,
-      "unused-imports/no-unused-imports": "error",
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": "off",
-      "unused-imports/no-unused-vars": [
-        "warn",
+      'unused-imports/no-unused-imports': 'error',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
+      'unused-imports/no-unused-vars': [
+        'warn',
         {
-          vars: "all",
-          varsIgnorePattern: "^_",
-          args: "after-used",
-          argsIgnorePattern: "^_"
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_'
         }
       ]
     }
   },
 
   {
-    files: ["**/*.{ts,tsx}"],
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
-      parser: tsParser,
+      parser: parserTs,
       parserOptions: {
         ecmaVersion: 2022,
-        sourceType: "module",
+        sourceType: 'module',
         project: ['./tsconfig.json']
       }
     },
     plugins: {
-      "@typescript-eslint": tsPlugin
+      '@typescript-eslint': pluginTs
     },
     rules: {
-      ...tsPlugin.configs.recommended.rules
+      ...pluginTs.configs.recommended.rules
     }
   },
 
   {
-    files: ["**/*.{jsx,tsx}"],
-    settings: {
-      react: {
-        version: "detect"
-      }
-    },
+    files: ['**/*.{jsx,tsx}'],
     plugins: {
       react: pluginReact,
       i18next: pluginI18next
     },
-    rules: {
-      "react/display-name": "off",
-      "react/react-in-jsx-scope": "off",
-      "i18next/no-literal-string": "warn"
+    settings: {
+      react: {
+        version: 'detect'
+      }
     },
-    extends: ["plugin:react/recommended"]
-  },
-
-  {
-    files: ["**/*.json"],
-    ...json.configs.recommended
-  },
-
-  {
-    files: ["**/*.test.{js,ts,jsx,tsx}", "**/*.spec.{js,ts,jsx,tsx}"],
+    rules: {
+      'react/react-in-jsx-scope': 'off',
+      'react/display-name': 'off',
+      'i18next/no-literal-string': 'warn'
+    },
     languageOptions: {
-      globals: globals.jest
+      parserOptions: {
+        ecmaVersion: 2022,
+        sourceType: 'module'
+      }
+    }
+  },
+
+  {
+    files: ['**/*.json'],
+    ...pluginJson.configs.recommended
+  },
+
+  {
+    files: ['**/*.test.{js,ts,jsx,tsx}', '**/*.spec.{js,ts,jsx,tsx}'],
+    languageOptions: {
+      globals: {
+        ...globals.jest
+      }
     }
   }
 ]);
