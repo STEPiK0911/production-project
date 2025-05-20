@@ -1,9 +1,10 @@
-import {LOCAL_STORAGE_KEY, Theme, ThemeContext} from "@app/providers/ThemeProvider/lib/ThemeContext";
+import {LOCAL_STORAGE_KEY, Theme, ThemeContext, ThemeKey} from "@app/providers/ThemeProvider/lib/ThemeContext";
 import {useContext} from "react";
+
 
 interface UseThemeResault {
     toggleTheme: () => void;
-    theme: Theme;
+    theme: ThemeKey
 }
 
 export function useTheme(): UseThemeResault {
