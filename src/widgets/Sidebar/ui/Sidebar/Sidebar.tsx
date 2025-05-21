@@ -3,6 +3,7 @@ import {classNames} from "@shared/lib/className/className";
 import {ThemeSwitcher} from "@widgets/ThemeSwitcher";
 import cls from './Sidebar.module.scss'
 import {LangSwitcher} from "@widgets/LangSwitcher/LangSwitcher";
+import {Button, ThemeButton} from "@shared/ui/Button/Button";
 
 interface SidebarProps {
     className?: string;
@@ -16,8 +17,8 @@ export const Sidebar = ({className}: SidebarProps) => {
     }
     return (
         <div className={classNames(cls.Sidebar, {[cls.collapsed]: collapsed}, className ? [className] : [])}>
-            {/* eslint-disable-next-line i18next/no-literal-string */}
-            <button onClick={toggleTheme}>toggle</button>
+            { }
+            <Button square theme={ThemeButton.BACKGROUND_INVERTED} className={cls.collapsedBtn} onClick={toggleTheme}>{collapsed ? ">" : "<"}</Button>
             <div className={cls.switchers}>
                 <ThemeSwitcher />
                 <LangSwitcher className={cls.lang} />
