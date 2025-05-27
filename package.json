@@ -16,7 +16,8 @@
     "stylef": "npx stylelint \"**/*.scss\" --fix",
     "test": "vitest",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepare": "husky"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
@@ -65,6 +66,7 @@
     "eslint-plugin-storybook": "^0.12.0",
     "eslint-plugin-unused-imports": "^4.1.4",
     "globals": "^16.1.0",
+    "husky": "^9.1.7",
     "jest-environment-jsdom": "^29.7.0",
     "jsdom": "^26.1.0",
     "loki": "^0.35.1",
