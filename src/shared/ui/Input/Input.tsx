@@ -1,6 +1,6 @@
 import React, {InputHTMLAttributes} from 'react';
 import { classNames } from "@shared/lib/className/className";
-import cls from './${NAME}.module.scss';
+import cls from './Input.module.scss';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
 

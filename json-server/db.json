@@ -1,16 +1,54 @@
 {
   "posts": [
-    { "id": "1", "title": "a title", "views": 100 },
-    { "id": "2", "title": "another title", "views": 200 }
+    {
+      "id": "1",
+      "title": "a title",
+      "views": 100
+    },
+    {
+      "id": "2",
+      "title": "another title",
+      "views": 200
+    }
   ],
   "comments": [
-    { "id": "1", "text": "a comment about post 1", "postId": "1" },
-    { "id": "2", "text": "another comment about post 1", "postId": "1" }
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
   ],
   "users": [
-    {"id": "1", "password": "123", "username": "user" },
-    {"id": "2", "password": "456", "username": "user" },
-    {"id": "3", "password": "789", "username": "admin" }
+    {
+      "id": "1",
+      "password": "123",
+      "username": "user"
+    },
+    {
+      "id": "2",
+      "password": "456",
+      "username": "user"
+    },
+    {
+      "id": "3",
+      "password": "789",
+      "username": "admin"
+    },
+    {
+      "username": "user",
+      "password": "123",
+      "id": "uuDMsD6"
+    },
+    {
+      "username": "user",
+      "password": "123",
+      "id": "qSrTo_6"
+    }
   ],
   "profile": {
     "name": "typicode"

@@ -1,13 +1,14 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, {ReactNode, useEffect, useState} from "react";
 import styles from "./Modal.module.scss";
 
 interface ModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-    children: ReactNode;
+    isOpen: boolean,
+    onClose: () => void,
+    children: ReactNode,
+    className?: string
 }
 
-export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
+export const Modal = ({isOpen, onClose, children, className}: ModalProps) => {
     const [show, setShow] = useState(false);
 
     useEffect(() => {
@@ -24,6 +25,7 @@ export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
     return (
         <div className={styles.modalOverlay} onClick={onClose}>
             <div
+                role={"button"}
                 className={`${styles.modalContent} ${show ? styles.modalOpen : ""}`}
                 onClick={(e) => e.stopPropagation()}
             >
