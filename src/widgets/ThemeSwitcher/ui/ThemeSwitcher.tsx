@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {classNames} from "@shared/lib/className/className";
 import {Theme, useTheme} from "@app/providers/ThemeProvider";
 import Sun from '@shared/assets/icons/sub.svg?react';
@@ -9,7 +9,7 @@ interface ThemeSwitcherProps {
     className?: string;
 }
 
-export const ThemeSwitcher = ({className}: ThemeSwitcherProps) => {
+export const ThemeSwitcher = memo(({className}: ThemeSwitcherProps) => {
     const { theme, toggleTheme } = useTheme() ;
 
 
@@ -22,5 +22,5 @@ export const ThemeSwitcher = ({className}: ThemeSwitcherProps) => {
             </div>
        </Button>
     );
-};
+});
 

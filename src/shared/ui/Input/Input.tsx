@@ -1,4 +1,4 @@
-import React, {InputHTMLAttributes} from 'react';
+import React, {InputHTMLAttributes, memo} from 'react';
 import { classNames } from "@shared/lib/className/className";
 import cls from './Input.module.scss';
 
@@ -10,7 +10,7 @@ interface InputProps extends HTMLInputProps{
     onChange?: (value: string) => void;
 }
 
-export const Input = ({ className, value, onChange, type = 'text' }: InputProps) => {
+export const Input = memo(({ className, value, onChange, type = 'text' }: InputProps) => {
 
     const onChengeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange?.(e.target.value);
@@ -25,4 +25,4 @@ export const Input = ({ className, value, onChange, type = 'text' }: InputProps)
             />
         </div>
     );
-};
+});

@@ -18,20 +18,24 @@ export const loginByUsername = createAsyncThunk<
     "login/loginByUsername",
     async ({ username, password }, thunkAPI) => {
         try {
-            const response = await axios.post<User>("http://localhost:8000/users", {
-                username,
-                password
+            const response = await axios.get<User[]>("http://localhost:3000/users", {
+                params: { username, password }
             });
-            if(response.status !== 200) {
-                throw new Error("Ошбка ав")
-            }
-            localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data));
-            thunkAPI.dispatch(userAction.setAuthData(response.data))
 
-            return response.data;
+            const user = response.data[0];
+
+            if (!user) {
+                return thunkAPI.rejectWithValue("Неверный логин или пароль");
+            }
+
+            localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(user));
+            thunkAPI.dispatch(userAction.setAuthData(user));
+
+            return user;
         } catch (e) {
             console.error(e);
             return thunkAPI.rejectWithValue("Ошибка авторизации");
         }
     }
 );
+

@@ -48,9 +48,46 @@
       "username": "user",
       "password": "123",
       "id": "qSrTo_6"
+    },
+    {
+      "username": "user",
+      "password": "123",
+      "id": "Fc_rpop"
+    },
+    {
+      "username": "user",
+      "password": "123",
+      "id": "rC5C7pg"
+    },
+    {
+      "username": "user",
+      "password": "123",
+      "id": "kHtkqlf"
+    },
+    {
+      "username": "user",
+      "password": "123",
+      "id": "sSgT7Fr"
+    },
+    {
+      "username": "userа",
+      "password": "1234",
+      "id": "WfaA6wJ"
+    },
+    {
+      "username": "userа",
+      "password": "1234",
+      "id": "esRDZ8H"
     }
   ],
   "profile": {
-    "name": "typicode"
+    "first": "step",
+    "lastname": "pogr",
+    "age": 22,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Moscow",
+    "username": "admin",
+    "avatar": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAflBMVEUQCUMACETyFDvtFDvnFDsACUPMEj2jED9ZDEH3FTrfEzwAADcAAChoACTzABvsABvsACPsADCjorD////96Ov0iZacm6r1k57+9vgWEEfCwckAADALAEEAADOXlaUAAB8AACS9vcbZ2d8+PF8AAD/k4+ju7fA1MlmCgJNKSGexgY0zAAAAp0lEQVR4AdXPRRaEMBAA0RDc3d3h/hcc9KUJsp/aID+KLjGYhVHIfSAv4A8Uv1CSKYQxyh1V7Uw3TNOyIaqOC/N8C2LgXgvtD4wsCtV4DyXLB6Ywzfby4gHLfK9aPxQZY4h1cuQu5ZIocJggrEl5nmeYZ2w7tEaw2KrXN3UziJW6pvWuO+QZjTla68blNdGeEW3XnFSADkG0LuzOHVBNIyuly8dq/9YPPwQXTwZ+3cAAAAAASUVORK5CYII="
   }
 }

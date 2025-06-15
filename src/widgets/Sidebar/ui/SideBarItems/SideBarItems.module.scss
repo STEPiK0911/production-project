@@ -1,0 +1,16 @@
+.link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 12px 16px;
+    margin: 8px 0;
+    transition: 0.3s;
+}
+
+.link:hover {
+    color: #1d6fa5;
+    background-color: #eef4fb;
+    border-radius: 6px;
+}

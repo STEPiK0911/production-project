@@ -24,7 +24,6 @@ const [isOpen, setIsOpen] = useState(false);
         <div className={classNames('app', {}, [theme])}>
             <Suspense fallback="">
                 <Navbar/>
-                <button onClick={() => setIsOpen(true)}>Открыть модалку</button>
                 <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
                     <h2>Я модалка</h2>
                     <p>Контент внутри</p>

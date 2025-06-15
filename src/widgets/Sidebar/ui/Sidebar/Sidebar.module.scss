@@ -7,7 +7,7 @@
 }
 
 .collapsed {
-    width: 80px;
+    width: 120px;
 }
 
 .switchers {
@@ -19,6 +19,14 @@
     gap: 12px; // расстояние между переключателями
 }
 
+.Sidebar.collapsed .switchers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; // при сжатом сайдбаре — в колонку
+    gap: 8px;
+}
+
 .lang {
     margin-left: 20px;
 }
@@ -27,5 +35,9 @@
     position: absolute;
     right: -40px;
     bottom: 40px;
+
+}
+
+.com {
 
 }
